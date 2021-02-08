@@ -138,6 +138,9 @@ class Application {
   /// The information may come from the application itself or the system
   final ApplicationCategory category;
 
+  /// The package name of the application which installed this application
+  final String installerPackageName;
+
   factory Application._(Map<Object, Object> map) {
     if (map == null || map.length == 0) {
       throw Exception('The map can not be null!');
@@ -169,6 +172,7 @@ class Application {
         systemApp = map['system_app'],
         installTimeMillis = map['install_time'],
         updateTimeMillis = map['update_time'],
+        installerPackageName = map['installer_package_name'],
         category = _parseCategory(map['category']);
 
   /// Mapping of Android categories

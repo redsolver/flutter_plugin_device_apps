@@ -193,6 +193,20 @@ public class DeviceAppsPlugin implements
         map.put("install_time", pInfo.firstInstallTime);
         map.put("update_time", pInfo.lastUpdateTime);
 
+        map.put("installer_package_name", packageManager.getInstallerPackageName(pInfo.packageName));
+
+        /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            try {
+                final InstallSourceInfo info = packageManager.getInstallSourceInfo(pInfo.packageName);
+                System.out.println(info);
+                System.out.println(info.getInitiatingPackageName());
+                System.out.println(info.getInstallingPackageName());
+                System.out.println(info.getOriginatingPackageName());
+            } catch (PackageManager.NameNotFoundException e) {
+                // e.printStackTrace();
+            }
+        } */
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             map.put("category", pInfo.applicationInfo.category);
         }
